@@ -1,6 +1,7 @@
 package com.example.client.service.impl;
 
 import com.example.client.dto.request.GetClientRequestDto;
+import com.example.client.dto.request.IsClientRequestDto;
 import com.example.client.dto.request.PostClientRequestDto;
 import com.example.client.dto.response.GetClientResponseDto;
 import com.example.client.dto.response.PostClientResponseDto;
@@ -9,6 +10,7 @@ import com.example.client.repository.ClientRepository;
 import com.example.client.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 
 
@@ -37,8 +39,17 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    public Boolean isClient(IsClientRequestDto isClientRequestDto) {
+        return clientRepository.findByFirstNameAndLastNameAndMiddleName(
+                        isClientRequestDto.getFirstName(),
+                        isClientRequestDto.getLastName(),
+                        isClientRequestDto.getMiddleName())
+                .isPresent();
+    }
+
+    @Override
     public PostClientResponseDto postClient(PostClientRequestDto requestDto) {
-        if (clientRepository.getClientByVinCodeAuto(requestDto.getVinCodeAuto())==null){
+        if (clientRepository.getClientByVinCodeAuto(requestDto.getVinCodeAuto()) == null) {
             clientRepository.save(new Client(
                     requestDto.getFirstName(),
                     requestDto.getMiddelName(),

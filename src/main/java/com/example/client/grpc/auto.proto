@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package autoservice;
+
+option java_multiple_files = true;
+option java_package = "com.example.client.grpc";
+option java_outer_classname = "AutoServiceProto";
+
+service AutoService {
+  rpc GetServiceCompany (VinCodeRequest) returns (ServiceCompanyResponse);
+}
+
+message VinCodeRequest {
+  string vin_code = 1;  // Лучше использовать snake_case для полей
+}
+
+message ServiceCompanyResponse {
+  string company_name = 1;
+  string description = 2;  // Изменено на string и правильное написание
+  // Можно добавить другие поля, например:
+  // string address = 3;
+  // string phone = 4;
+}

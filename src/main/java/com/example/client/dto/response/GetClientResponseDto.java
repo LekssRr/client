@@ -12,6 +12,7 @@ public class GetClientResponseDto {
     private String lastName;
 
     private String vinCodeAuto;
+
     private List<SigningService> signingServiceList;
 
     public String getMiddelName() {

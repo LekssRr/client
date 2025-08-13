@@ -1,10 +1,15 @@
 package com.example.client.model;
 
 import jakarta.persistence.*;
+import org.springframework.data.jpa.repository.EntityGraph;
 
 import java.util.List;
 
 @Entity
+@NamedEntityGraph(
+        name = "signingServiceList",
+        attributeNodes = @NamedAttributeNode("signingServiceList")
+)
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
