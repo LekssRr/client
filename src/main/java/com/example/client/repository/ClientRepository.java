@@ -12,4 +12,5 @@ public interface ClientRepository extends JpaRepository<Client, Integer> {
     Client getClientByVinCodeAuto(String vinCodeAuto);
 
     Optional<Client> findByFirstNameAndLastNameAndMiddleName(String firstName, String lastName, String middleName);
+
 }

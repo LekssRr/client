@@ -8,17 +8,17 @@ import com.example.client.dto.response.PostClientResponseDto;
 import com.example.client.model.Client;
 import com.example.client.repository.ClientRepository;
 import com.example.client.service.ClientService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 
 import java.util.ArrayList;
-
 
 @Service
 public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository clientRepository;
-
     @Autowired
     public ClientServiceImpl(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
