@@ -34,7 +34,7 @@ public class ClientController {
     public ResponseEntity<PostClientResponseDto> postClient(@RequestBody PostClientRequestDto postClientRequestDto){
         return ResponseEntity.ok(clientService.postClient(postClientRequestDto));
     }
-    @GetMapping("/is")  // ✅ GET с query-параметрами
+    @GetMapping("/is")
     public ResponseEntity<Boolean> isClient(
             @RequestParam String firstName,
             @RequestParam String lastName,
